@@ -47,7 +47,7 @@ class FacebookDataIngestSource:
       video_json = video_search.json()
       video_index = 0
       if video_index < len(video_json['data']):
-              rows = video_json['data'][video_index])
+              rows = video_json['data'][video_index]
               self.rows[self.index] = rows
               self.index = self.index + 1 
               
