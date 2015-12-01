@@ -50,7 +50,6 @@ class FacebookDataIngestSource:
               rows = video_json['data'][video_index]
               self.rows[self.index] = rows
               self.index = self.index + 1 
-              
-    return self.rows    
+      return self.rows    
     else:
       raise StopIteration()
