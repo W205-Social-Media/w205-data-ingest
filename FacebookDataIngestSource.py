@@ -58,6 +58,6 @@ class FacebookDataIngestSource:
       raise StopIteration()
 
 f = file('config.py')
-cfg = Config(f)
+cfg = config(f)
 x = FacebookDataIngestSource(cfg)
 x
