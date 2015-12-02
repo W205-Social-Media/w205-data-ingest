@@ -1,7 +1,5 @@
 import requests
 import json
-from pprint import pprint
-from config import *
 
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
@@ -22,14 +20,14 @@ class FacebookDataIngestSource:
     self.access_token = token_req.text.split('=')[1]
     
 #### Retrieve term to search    
-    page_search_term = config.terms = [ '#Venezuela' , 'Venezuela' ]
+    page_search_term = config.terms = [ '#kitesurfing' , '#basejumping' ]
 
 #### Request id for pages associated to search term    
     page_search_request='page&fields=id'
 
 #### Define url for http request to get pages id associated to search term    
     page_search_url = 'https://graph.facebook.com/search?q=%s&type=%s&access_token=%s'%(page_search_term, page_search_request, self.access_token)
-    pprint(page_searh_url)
+
 #### Get a list of pages id associated to search term    
     self.page_search = requests.get(search_url)
     self.page_json = self.page_search.json()
@@ -45,19 +43,14 @@ class FacebookDataIngestSource:
       page_id = page_json['data'][self.page_index]['id']
       self.page_index = self.page_index + 1
       video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(page_id,self.access_token)
-      pprint(video_url)
       video_search = requests.get(video_url)
       video_json = video_search.json()
       video_index = 0
-      if video_index < len(video_json['data']):
-              rows = video_json['data'][video_index]
+          if video_index < len(video_json['data']):
+              rows = video_json['data'][video_index])
               self.rows[self.index] = rows
               self.index = self.index + 1 
-      return self.rows  
-      pprint(self.rows)  
+              
+    return self.rows    
     else:
       raise StopIteration()
-
-f = file('config.py')
-x = FacebookDataIngestSource(f)
-x
