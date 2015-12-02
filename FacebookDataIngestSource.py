@@ -1,5 +1,6 @@
 import requests
 import json
+from pprint import pprint
 
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
@@ -46,11 +47,11 @@ class FacebookDataIngestSource:
       video_search = requests.get(video_url)
       video_json = video_search.json()
       video_index = 0
-          if video_index < len(video_json['data']):
-              rows = video_json['data'][video_index])
-              self.rows[self.index] = rows
-              self.index = self.index + 1 
-              
-    return self.rows    
+      if video_index < len(video_json['data']):
+          rows = video_json['data'][video_index])
+          self.rows[self.index] = rows
+          self.index = self.index + 1 
+      return self.rows 
+      pprint(self.rows)   
     else:
       raise StopIteration()

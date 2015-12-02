@@ -9,6 +9,7 @@ class S3DataIngestSink
     self.config = config
     aws_access_key_id = self.config['aws_access_key_id']
     aws_secret_access_key = self.config['aws_secret_access_key']
+    aws_bucket = 'shoot2top'
 
     conn = boto.connect_s3(aws_access_key_id, aws_secret_access_key)
     

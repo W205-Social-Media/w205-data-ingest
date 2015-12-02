@@ -1,7 +1,7 @@
 import argparse
 import ConfigParser
 
-import TwitterDataIngestSource
+import FacebookDataIngestSource
 import S3DataIngestSink
 
 
@@ -56,5 +56,5 @@ class DataIngest:
     self.sinks[0].write(self.sources[0])
 
 if __name__ == "__main__":
-  main()
-
+    main()
+    fb = FacebookDataIngestSource.FacebookDataIngestSource(facebook_config)
