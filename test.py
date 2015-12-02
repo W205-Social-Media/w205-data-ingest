@@ -2,6 +2,8 @@ import DataIngest
 
 config = file('.w205-data-ingest.cfg')
 
-run = DataIngest.DataIngest(config)
+print config
+
+run = DataIngest(config)
 
 run
