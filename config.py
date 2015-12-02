@@ -1,2 +1,2 @@
-consumer_key:'210412405693448'
-onsumer_secret:'177fe950d29470dcee451a384636b787'
+consumer_key='210412405693448'
+consumer_secret='177fe950d29470dcee451a384636b787'
