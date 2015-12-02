@@ -2,7 +2,7 @@ import boto
 import datetime
 import uuid
 
-class S3DataIngestSink
+class S3DataIngestSink:
   """Output data to S3"""
 
   def __init__(self, config):
