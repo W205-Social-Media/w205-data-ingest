@@ -1,7 +1,7 @@
 import requests
 import json
 from pprint import pprint
-from config import Config
+import config
 
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
@@ -57,7 +57,7 @@ class FacebookDataIngestSource:
     else:
       raise StopIteration()
 
-f = file('config.cfg')
+f = file('config.py')
 cfg = Config(f)
 x = FacebookDataIngestSource(cfg)
 x
