@@ -1,5 +1,7 @@
 import requests
 import json
+from pprint import pprint
+from pprint_data import data
 
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
@@ -11,8 +13,8 @@ class FacebookDataIngestSource:
   
   def __iter__(self):
 #### Retrieve the consumer key and secret
-    consuner_key = self.config['consumer_key']
-    consumer_secret = self.config['consumer_secret']  
+    consuner_key = self.config['210412405693448']
+    consumer_secret = self.config['177fe950d29470dcee451a384636b787']  
 #### Define url for http request for access token
     auth_url = 'https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(consumer_key,consumer_secret)
 #### Get authorization token from Facebook and store it for future use
@@ -20,7 +22,7 @@ class FacebookDataIngestSource:
     self.access_token = token_req.text.split('=')[1]
     
 #### Retrieve term to search    
-    page_search_term = config.terms = [ '#kitesurfing' , '#basejumping' ]
+    page_search_term = config.terms = [ '#Venezuela' , 'Venezuela' ]
 
 #### Request id for pages associated to search term    
     page_search_request='page&fields=id'
@@ -50,6 +52,7 @@ class FacebookDataIngestSource:
               rows = video_json['data'][video_index]
               self.rows[self.index] = rows
               self.index = self.index + 1 
-      return self.rows    
+      return self.rows  
+      pprint(self.rows)  
     else:
       raise StopIteration()
