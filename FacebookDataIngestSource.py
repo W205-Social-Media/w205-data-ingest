@@ -29,7 +29,7 @@ class FacebookDataIngestSource:
 
 #### Define url for http request to get pages id associated to search term    
     page_search_url = 'https://graph.facebook.com/search?q=%s&type=%s&access_token=%s'%(page_search_term, page_search_request, self.access_token)
-
+    pprint(page_searh_url)
 #### Get a list of pages id associated to search term    
     self.page_search = requests.get(search_url)
     self.page_json = self.page_search.json()
@@ -45,6 +45,7 @@ class FacebookDataIngestSource:
       page_id = page_json['data'][self.page_index]['id']
       self.page_index = self.page_index + 1
       video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(page_id,self.access_token)
+      pprint(video_url)
       video_search = requests.get(video_url)
       video_json = video_search.json()
       video_index = 0
