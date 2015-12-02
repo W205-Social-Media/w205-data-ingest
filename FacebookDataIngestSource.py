@@ -55,3 +55,5 @@ class FacebookDataIngestSource:
       pprint(self.rows)  
     else:
       raise StopIteration()
+
+FacebookDataIngestSource()
