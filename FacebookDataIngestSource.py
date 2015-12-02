@@ -1,7 +1,7 @@
 import requests
 import json
 from pprint import pprint
-import config
+from config import *
 
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
