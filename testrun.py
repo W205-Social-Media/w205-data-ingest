@@ -61,6 +61,8 @@ class FacebookDataIngestSource:
       pprint(video_json)
  ##     with io.open('/data/w205/shoot2top/w205-data-ingest/results.txt', 'a',encoding='utf8') as f:
  ##         f.write("%s\n %s\n %s\n" %(page_id,page_name, video_json))
+    # Log the count - just to see the topology running
+      self.log('%s: %s -> %s' % (self.page_index,page_name,video_json))      
       
     else:
       raise StopIteration()
