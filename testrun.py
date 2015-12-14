@@ -76,7 +76,7 @@ ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
 for i in ven:
     pprint (i.page_id)
     pprint (i.page_name)
-    pprint (i.video_json)
+    pprint (i.video_json[data][comments][created_time])
     print'_____________________'
     
 
