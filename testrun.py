@@ -72,7 +72,7 @@ class FacebookDataIngestSource:
 
 term = str(sys.argv)
 
-ven = FacebookDataIngestSource(.w205-data-ingest.cfg, 'Venezuela')
+ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
 
 for i in ven:
     print i.page_id, i.page_name, i.video_json
