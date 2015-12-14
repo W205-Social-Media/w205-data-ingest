@@ -76,4 +76,4 @@ term = str(sys.argv)
 
 data = FacebookDataIngestSource('.w205-data-ingest.cfg')
 
-pprint(data.next)
+pprint(data.next.page_index)
