@@ -54,7 +54,7 @@ class FacebookDataIngestSource:
       self.page_id = self.page_json['data'][self.page_index]['id']
       self.page_name = self.page_json['data'][self.page_index]['name']
       self.page_index = self.page_index + 1
-      video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(page_id,self.access_token)
+      video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(self.page_id,self.access_token)
       video_search = requests.get(video_url)
       self.video_json = video_search.json()
  ##     with io.open('/data/w205/shoot2top/w205-data-ingest/results.txt', 'a',encoding='utf8') as f:
