@@ -74,9 +74,12 @@ term = str(sys.argv)
 ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
 
 for i in ven:
-    print i.page_id, i.page_name, i.video_json
+    pprint (i.page_id)
+    pprint (i.page_name)
+    pprint (i.video_json)
+    print'_____________________'
     
-print '_____________________'
+
 
 
 
