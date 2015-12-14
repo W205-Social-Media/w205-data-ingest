@@ -12,7 +12,7 @@ class FacebookDataIngestSource:
   """Ingest data from Facebook"""
   
   def __init__(self, config, term):
-    self.config = dict(config.items('Facebook'))
+    self.config = dict(config.get('Facebook'))
     self.term = term
     self.page_id = []
     self.page_name = []
