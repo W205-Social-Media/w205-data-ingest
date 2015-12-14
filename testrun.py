@@ -21,8 +21,8 @@ class FacebookDataIngestSource:
   def __iter__(self):
 
 #### Retrieve the consumer key and secret
-    consumer_key = self.config.get('Facebook','consumer_key')
-    consumer_secret = self.config.get('Facebook','consumer_secret')
+    consumer_key = self.config('Facebook','consumer_key')
+    consumer_secret = self.config('Facebook','consumer_secret')
 #### Define url for http request for access token
     auth_url = 'https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(consumer_key,consumer_secret)
 #### Get authorization token from Facebook and store it for future use
