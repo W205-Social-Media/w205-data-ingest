@@ -11,11 +11,11 @@ import sys
 class FacebookDataIngestSource:
   """Ingest data from Facebook"""
   
-  def __init__(self, config):
+  def __init__(self, config, term):
     self.config = config
-
+    self.term = term
   
-  def __iter__(self):
+  def __iter__(self,term):
 
 #### Retrieve the consumer key and secret
     consumer_key = self.config.get('Facebook','consumer_key')
@@ -27,7 +27,7 @@ class FacebookDataIngestSource:
     self.access_token = token_req.text.split('=')[1]
 
 #### Retrieve term to search    
-    page_search_term = 'Venezuela'
+    page_search_term = self.term
 
 #### Request id for pages associated to search term    
     page_search_request='page&fields=id,name'
@@ -74,6 +74,7 @@ class FacebookDataIngestSource:
 
 term = str(sys.argv)
 
-data = FacebookDataIngestSource('.w205-data-ingest.cfg')
+ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
 
-pprint(data.next.page_index)
+ven.__iter__
+ven.next
