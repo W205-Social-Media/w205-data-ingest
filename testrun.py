@@ -68,9 +68,7 @@ class FacebookDataIngestSource:
       raise StopIteration()
 
 
-
-
-    self.log('%s: %s -> %s' % (self.page_index,page_name,video_json))      
+    
     return self
     
 
