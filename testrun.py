@@ -69,9 +69,9 @@ class FacebookDataIngestSource:
 
 
 
-    
+    self.log('%s: %s -> %s' % (self.page_index,page_name,video_json))      
     return self
-  self.log('%s: %s -> %s' % (self.page_index,page_name,video_json))      
+    
 
 term = str(sys.argv)
 
