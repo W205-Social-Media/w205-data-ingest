@@ -1,3 +1,4 @@
+import argparse
 import ConfigParser
 import requests
 import json
@@ -21,8 +22,8 @@ class FacebookDataIngestSource:
   def __iter__(self):
 
 #### Retrieve the consumer key and secret
-    consumer_key = self.config['consumer_key']
-    consumer_secret = self.config ['consumer_secret']
+    consumer_key = 210412405693448
+    consumer_secret = '177fe950d29470dcee451a384636b787'
 #### Define url for http request for access token
     auth_url = 'https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(consumer_key,consumer_secret)
 #### Get authorization token from Facebook and store it for future use
@@ -51,15 +52,12 @@ class FacebookDataIngestSource:
     
     if self.page_index < len(self.page_json['data']):
 
-      page_id = self.page_json['data'][self.page_index]['id']
-      self.page_id.append(page_id)
-      page_name = self.page_json['data'][self.page_index]['name']
-      self.page_name.append(page_name)
+      self.page_id = self.page_json['data'][self.page_index]['id']
+      self.page_name = self.page_json['data'][self.page_index]['name']
       self.page_index = self.page_index + 1
       video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(page_id,self.access_token)
       video_search = requests.get(video_url)
-      video_json = video_search.json()
-      self.video_json.append(video_json)
+      self.video_json = video_search.json()
  ##     with io.open('/data/w205/shoot2top/w205-data-ingest/results.txt', 'a',encoding='utf8') as f:
  ##         f.write("%s\n %s\n %s\n" %(page_id,page_name, video_json))
     # Log the count - just t    
@@ -77,10 +75,10 @@ term = str(sys.argv)
 ven = FacebookDataIngestSource(.w205-data-ingest.cfg, 'Venezuela')
 
 for i in ven:
-    print i.page_id
+    print i.page_id, i.page_name, i.video_json
     
 print '_____________________'
 
-print ven.page_id
+
 
 
