@@ -8,7 +8,7 @@ import io
 import psycopg2
 import sys
 
-class FacebookDataIngestSource(term):
+class FacebookDataIngestSource():
   """Ingest data from Facebook"""
   
   def __init__(self, config):
@@ -27,7 +27,7 @@ class FacebookDataIngestSource(term):
     self.access_token = token_req.text.split('=')[1]
 
 #### Retrieve term to search    
-    page_search_term = term
+    page_search_term = 'Venezuela'
 
 #### Request id for pages associated to search term    
     page_search_request='page&fields=id,name'
@@ -72,6 +72,6 @@ class FacebookDataIngestSource(term):
 
 term = str(sys.argv)
 
-data = FacebookDataIngestSource(term)
+data = FacebookDataIngestSource()
 
 pprint(data)
