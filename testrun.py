@@ -8,7 +8,7 @@ import io
 import psycopg2
 import sys
 
-class FacebookDataIngestSource():
+class FacebookDataIngestSource:
   """Ingest data from Facebook"""
   
   def __init__(self, config):
