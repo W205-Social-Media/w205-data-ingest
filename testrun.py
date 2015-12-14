@@ -22,7 +22,7 @@ class FacebookDataIngestSource:
 
 #### Retrieve the consumer key and secret
     consumer_key = 210412405693448
-    consumer_secret = 177fe950d29470dcee451a384636b787
+    consumer_secret = '177fe950d29470dcee451a384636b787'
 #### Define url for http request for access token
     auth_url = 'https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(consumer_key,consumer_secret)
 #### Get authorization token from Facebook and store it for future use
