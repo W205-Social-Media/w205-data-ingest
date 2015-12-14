@@ -12,7 +12,7 @@ class FacebookDataIngestSource:
   """Ingest data from Facebook"""
   
   def __init__(self, config, term):
-    self.config = dict(config.get('Facebook'))
+    self.config = dict(config.items('Facebook'))
     self.term = term
     self.page_id = []
     self.page_name = []
@@ -74,7 +74,7 @@ class FacebookDataIngestSource:
 
 term = str(sys.argv)
 
-ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
+ven = FacebookDataIngestSource(.w205-data-ingest.cfg, 'Venezuela')
 
 for i in ven:
     print i.page_id
