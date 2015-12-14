@@ -14,6 +14,9 @@ class FacebookDataIngestSource:
   def __init__(self, config, term):
     self.config = config
     self.term = term
+    self.page_id = []
+    self.page_name = []
+    self.video_json = []
   
   def __iter__(self,term):
 
@@ -41,24 +44,22 @@ class FacebookDataIngestSource:
 #### Initialize page index to zero 
     self.page_index = 0
     self.index = 0
-    pprint(self.page_json)
     return self
 
   def next(self):
 #### Request all videos associated to each of the pages found to be relevant for the search
     
     if self.page_index < len(self.page_json['data']):
-      pprint(self.page_index)
-      pprint(len(self.page_json['data']))
+
       page_id = self.page_json['data'][self.page_index]['id']
+      self.page_id.append(page_id)
       page_name = self.page_json['data'][self.page_index]['name']
+      self.page_name.append(page_name)
       self.page_index = self.page_index + 1
       video_url = 'https://graph.facebook.com/v2.5/%s/videos?&fields=permalink_url,sharedposts,likes,comments&access_token=%s'%(page_id,self.access_token)
-      pprint(video_url)
       video_search = requests.get(video_url)
       video_json = video_search.json()
-      pprint (page_name)
-      pprint(video_json)
+      self.video_json.append(video_json)
  ##     with io.open('/data/w205/shoot2top/w205-data-ingest/results.txt', 'a',encoding='utf8') as f:
  ##         f.write("%s\n %s\n %s\n" %(page_id,page_name, video_json))
     # Log the count - just t    
@@ -78,4 +79,6 @@ term = str(sys.argv)
 ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
 
 print ven.term
+print ven.page_id
+
 
