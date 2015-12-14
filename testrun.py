@@ -72,6 +72,6 @@ class FacebookDataIngestSource:
 
 term = str(sys.argv)
 
-data = FacebookDataIngestSource(.w205-data-ingest.cfg)
+data = FacebookDataIngestSource('.w205-data-ingest.cfg')
 
 pprint(data)
