@@ -18,7 +18,7 @@ class FacebookDataIngestSource:
     self.page_name = []
     self.video_json = []
   
-  def __iter__(self,term):
+  def __iter__(self):
 
 #### Retrieve the consumer key and secret
     consumer_key = self.config.get('Facebook','consumer_key')
