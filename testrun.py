@@ -1,4 +1,3 @@
-import argparse
 import ConfigParser
 import requests
 import json
