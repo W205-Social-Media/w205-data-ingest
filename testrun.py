@@ -77,7 +77,8 @@ class FacebookDataIngestSource:
 term = str(sys.argv)
 
 ven = FacebookDataIngestSource('.w205-data-ingest.cfg', 'Venezuela')
-
+ven.__iter__
+ven.next
 print ven.term
 print ven.page_id
 
