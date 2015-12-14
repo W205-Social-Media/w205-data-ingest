@@ -12,7 +12,7 @@ class FacebookDataIngestSource:
   """Ingest data from Facebook"""
   
   def __init__(self, config, term):
-    self.config = dict(self.config.items('Facebook'))
+    self.config = dict(config.items('Facebook'))
     self.term = term
     self.page_id = []
     self.page_name = []
@@ -21,8 +21,8 @@ class FacebookDataIngestSource:
   def __iter__(self):
 
 #### Retrieve the consumer key and secret
-    consumer_key = config['consumer_key']
-    consumer_secret = config ['consumer_secret']
+    consumer_key = self.config['consumer_key']
+    consumer_secret = self.config ['consumer_secret']
 #### Define url for http request for access token
     auth_url = 'https://graph.facebook.com/oauth/access_token?grant_type=client_credentials&client_id=%s&client_secret=%s'%(consumer_key,consumer_secret)
 #### Get authorization token from Facebook and store it for future use
